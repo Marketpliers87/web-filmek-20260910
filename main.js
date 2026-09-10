@@ -93,6 +93,8 @@ const filmek = [
 
 const table = document.getElementById('tartalom');
 for (const film of filmek) {
+
+
     const tr = document.createElement('tr');
     const tdTitle = document.createElement('td');
     tdTitle.innerText = film.title;
@@ -109,6 +111,12 @@ for (const film of filmek) {
     const tdRating = document.createElement('td');
     tdRating.innerText = film.rating;
     tr.appendChild(tdRating);
+    
+    if (film.rating <= 2) {
+      tr.classList.add('low-rating');
+    }
+
+    
 
     table.appendChild(tr);
 }
