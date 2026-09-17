@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web task</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
     
     <h1>Elérhető filmek adatai</h1>
+    
+<form id="movieForm" class="row g-3 mb-5 p-3 border rounded bg-light">
+        <h2>Új film hozzáadása</h2>
+        <div class="col-md-3">
+            <label for="titleInput" class="form-label">Title</label>
+            <input type="text" class="form-control" id="titleInput" required>
+        </div>
+        <div class="col-md-2">
+            <label for="yearInput" class="form-label">Year</label>
+            <input type="number" class="form-control" id="yearInput" required>
+        </div>
+        <div class="col-md-3">
+            <label for="genreInput" class="form-label">Genre</label>
+            <input type="text" class="form-control" id="genreInput" required>
+        </div>
+        <div class="col-md-2">
+            <label for="ratingInput" class="form-label">Rating (1-5)</label>
+            <input type="number" min="1" max="5" class="form-control" id="ratingInput" required>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Add</button>
+        </div>
+    </form>
 
-    <table>
+<table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Title</th>
@@ -22,8 +46,9 @@
         <tbody id="tartalom">
 
         </tbody>
+</table>
 
-    </table>
     <script src="main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
