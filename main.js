@@ -91,32 +91,59 @@ const filmek = [
   }
 ];
 
-const table = document.getElementById('tartalom');
-for (const film of filmek) {
+const table = document.getElementById("tartalom");
 
+function filmHozzaadas(film) {
+  const tr = document.createElement("tr");
 
-    const tr = document.createElement('tr');
-    const tdTitle = document.createElement('td');
-    tdTitle.innerText = film.title;
-    tr.appendChild(tdTitle);
+  const tdTitle = document.createElement("td");
+  tdTitle.innerText = film.title;
+  tr.appendChild(tdTitle);
 
-    const tdYear = document.createElement('td');
-    tdYear.innerText = film.year;
-    tr.appendChild(tdYear);
+  const tdYear = document.createElement("td");
+  tdYear.innerText = film.year;
+  tr.appendChild(tdYear);
 
-    const tdGenre = document.createElement('td');
-    tdGenre.innerText = film.genre;
-    tr.appendChild(tdGenre);
+  const tdGenre = document.createElement("td");
+  tdGenre.innerText = film.genre;
+  tr.appendChild(tdGenre);
 
-    const tdRating = document.createElement('td');
-    tdRating.innerText = film.rating;
-    tr.appendChild(tdRating);
-    
-    if (film.rating <= 2) {
-      tr.classList.add('low-rating');
-    }
+  const tdRating = document.createElement("td");
+  tdRating.innerText = "⭐".repeat(film.rating);
+  tr.appendChild(tdRating);
 
-    
+  if (film.rating <= 2) {
+    tr.classList.add("low-rating");
+  }
 
-    table.appendChild(tr);
+  table.appendChild(tr);
 }
+
+for (const film of filmek) {
+  filmHozzaadas(film);
+}
+
+
+const form = document.getElementById("movieForm");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const title = document.getElementById("titleInput").value;
+  const year = document.getElementById("yearInput").value;
+  const genre = document.getElementById("genreInput").value;
+  const rating = document.getElementById("ratingInput").value;
+
+  const ujFilm = {
+    title: title,
+    year: year,
+    genre: genre,
+    rating: rating
+  };
+
+  filmek.push(ujFilm);
+
+  filmHozzaadas(ujFilm);
+
+  form.reset();
+});
